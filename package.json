@@ -1,0 +1,91 @@
+{
+  "name": "@ykey/util",
+  "description": "Utilities",
+  "version": "0.0.0",
+  "author": {
+    "name": "ykeyjp",
+    "email": "ykey.jp@gmail.com",
+    "url": "https://github.com/ykeyjp"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "source": [
+      "lib/**/*.js"
+    ],
+    "powerAssert": false
+  },
+  "bugs": "https://github.com/ykeyjp/util.js/issues",
+  "devDependencies": {
+    "@types/node": "^8.0.5",
+    "ava": "^0.20.0",
+    "cross-env": "^5.0.1",
+    "npm-run-all": "^4.0.2",
+    "nyc": "^11.0.3",
+    "prettier": "^1.5.2",
+    "xo": "^0.18.2"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "homepage": "https://github.com/ykeyjp/util.js",
+  "keywords": [
+    "utilities"
+  ],
+  "license": "MIT",
+  "main": "lib/index",
+  "module": "lib/index",
+  "modules.root": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ykeyjp/util.js.git"
+  },
+  "scripts": {
+    "cover": "nyc ava",
+    "cover:report": "nyc report --reporter=html",
+    "format": "prettier --write --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing {src,test}/**/*.js",
+    "lint": "xo {lib,test}/**/*.js",
+    "report": "run-s cover cover:report",
+    "test": "ava"
+  },
+  "xo": {
+    "space": true,
+    "envs": [
+      "node",
+      "es6"
+    ],
+    "rules": {
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true
+        }
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "no-new-func": [
+        "off"
+      ],
+      "space-before-function-paren": [
+        2,
+        "never"
+      ],
+      "operator-linebreak": [
+        "error",
+        "after",
+        {
+          "overrides": {
+            "-=": "before",
+            "+=": "before",
+            "?": "before",
+            ":": "before"
+          }
+        }
+      ]
+    }
+  }
+}
