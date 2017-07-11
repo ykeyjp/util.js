@@ -1,7 +1,7 @@
 {
   "name": "@ykey/util",
   "description": "Utilities",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": {
     "name": "ykeyjp",
     "email": "ykey.jp@gmail.com",
@@ -12,7 +12,8 @@
       "test/**/*.test.js"
     ],
     "source": [
-      "lib/**/*.js"
+      "**/*.js",
+      "!test/**/*.js"
     ],
     "powerAssert": false
   },
@@ -34,9 +35,7 @@
     "utilities"
   ],
   "license": "MIT",
-  "main": "lib/index",
-  "module": "lib/index",
-  "modules.root": "./lib",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ykeyjp/util.js.git"
@@ -44,8 +43,8 @@
   "scripts": {
     "cover": "nyc ava",
     "cover:report": "nyc report --reporter=html",
-    "format": "prettier --write --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing {src,test}/**/*.js",
-    "lint": "xo {lib,test}/**/*.js",
+    "format": "prettier --write --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing **/*.js",
+    "lint": "xo **/*.js",
     "report": "run-s cover cover:report",
     "test": "ava"
   },

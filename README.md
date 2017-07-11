@@ -9,7 +9,7 @@ utilities.
 - package.json
 ```json
 {
-  "devDependencies": {
+  "dependencies": {
     "@ykey/util": "https://github.com/ykeyjp/util.js.git"
   }
 }
