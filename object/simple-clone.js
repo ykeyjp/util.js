@@ -14,7 +14,7 @@ function clone(src) {
       if (index !== -1) {
         return refs.clone[index];
       }
-      const d = Object.assign({}, s);
+      const d = Object.assign(Object.create(Object.getPrototypeOf(s)), s);
       const i = refs.orig.length;
       refs.orig[i] = s;
       refs.clone[i] = d;

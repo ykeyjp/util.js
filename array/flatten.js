@@ -1,5 +1,6 @@
 /**
  * @param {any[]} arr
+ * @return {any[]}
  */
 function flatten(arr) {
   return arr.reduce(
