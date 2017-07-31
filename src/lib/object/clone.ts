@@ -1,13 +1,14 @@
-/**
- * @param {any} obj
- * @return {any}
- */
-function clone(src) {
-  const refs = {
-    orig: [],
+interface IRefferenceCache {
+  clone: any[];
+  orig: any[];
+}
+
+export default function clone(src: any): any {
+  const refs: IRefferenceCache = {
     clone: [],
+    orig: [],
   };
-  function deep(s) {
+  function deep(s: any): any {
     const t = Object.prototype.toString.call(s).slice(8, -1).toLowerCase();
     if (t === 'object') {
       const index = refs.orig.indexOf(s);
@@ -23,14 +24,10 @@ function clone(src) {
       });
       return d;
     } else if (t === 'array') {
-      return s.map(o => deep(o));
+      return s.map((o: any) => deep(o));
     }
     return s;
   }
   const _ = deep(src);
-  delete refs.orig;
-  delete refs.clone;
   return _;
 }
-
-module.exports = clone;

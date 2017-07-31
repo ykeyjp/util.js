@@ -6,15 +6,11 @@ utilities.
 
 ## Installation
 
-- package.json
-```json
-{
-  "dependencies": {
-    "@ykey/util": "https://github.com/ykeyjp/util.js.git"
-  }
-}
 ```
-and `npm update` or `yarn install`.
+$ npm install @ykey/util
+# or
+$ yarn add @ykey/util
+```
 
 ## Contribution
 

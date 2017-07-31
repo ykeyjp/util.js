@@ -1,8 +1,6 @@
-/**
- * @param {object} A
- * @param {object} B
- */
-function diff(A, B) {
+import {IDiffResult} from './diff-type';
+
+export default function diff(A: any, B: any): IDiffResult {
   const keysA = Object.keys(A);
   const keysB = Object.keys(B);
   const removed = keysA.filter(name => keysB.indexOf(name) === -1);
@@ -23,10 +21,8 @@ function diff(A, B) {
   });
   return {
     add: added,
-    remove: removed,
     change: changed,
     differ: added.length > 0 || removed.length > 0 || changed.length > 0,
+    remove: removed,
   };
 }
-
-module.exports = diff;

@@ -1,7 +1,7 @@
 {
   "name": "@ykey/util",
   "description": "Utilities",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
     "name": "ykeyjp",
     "email": "ykey.jp@gmail.com",
@@ -12,7 +12,7 @@
       "test/**/*.test.js"
     ],
     "source": [
-      "**/*.js"
+      "lib/**/*.js"
     ],
     "powerAssert": false
   },
@@ -23,66 +23,45 @@
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.3",
     "prettier": "^1.5.3",
-    "xo": "^0.18.2"
+    "tslint": "^5.5.0",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.4.2"
   },
   "engines": {
     "node": ">=6"
   },
+  "files": [
+    "package.json",
+    "README.md",
+    "lib",
+    "doc"
+  ],
   "homepage": "https://github.com/ykeyjp/util.js",
   "keywords": [
     "utilities"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/ykeyjp/util.js.git"
   },
   "scripts": {
-    "cover": "nyc ava",
-    "cover:report": "nyc report --reporter=html",
-    "format": "prettier --write --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing **/*.js",
-    "lint": "xo **/*.js",
-    "report": "run-s cover cover:report",
-    "test": "ava"
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json -w",
+    "doc": "typedoc --out doc --mode module --target ES2015 src/lib/**/*.ts",
+    "format": "prettier --write --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing src/**/*.ts",
+    "lint": "tslint src/**/*.ts",
+    "report": "run-s test:build report:cover report:html",
+    "report:cover": "nyc ava",
+    "report:html": "nyc report --reporter=html",
+    "test": "run-s test:build test:run",
+    "test:build": "tsc -p tsconfig.test.json",
+    "test:build:watch": "tsc -p tsconfig.test.json -w",
+    "test:run": "ava",
+    "test:run:watch": "ava -w",
+    "test:watch": "run-p test:build:watch test:run:watch"
   },
-  "xo": {
-    "space": true,
-    "envs": [
-      "node",
-      "es6"
-    ],
-    "rules": {
-      "quotes": [
-        "error",
-        "single",
-        {
-          "avoidEscape": true
-        }
-      ],
-      "comma-dangle": [
-        "error",
-        "always-multiline"
-      ],
-      "no-new-func": [
-        "off"
-      ],
-      "space-before-function-paren": [
-        2,
-        "never"
-      ],
-      "operator-linebreak": [
-        "error",
-        "after",
-        {
-          "overrides": {
-            "-=": "before",
-            "+=": "before",
-            "?": "before",
-            ":": "before"
-          }
-        }
-      ]
-    }
-  }
+  "types": "lib/index.d.ts"
 }

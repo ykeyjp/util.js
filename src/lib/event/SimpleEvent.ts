@@ -1,16 +1,9 @@
-class SimpleEvent {
-  constructor() {
-    /**
-     * @type {{[key:string]: function[]}}
-     */
-    this.events = {};
-  }
+import {EventFunctionType, IFunctionMap} from './SimpleEventType';
 
-  /**
-   * @param {string} type
-   * @param {function} fn
-   */
-  on(type, fn) {
+export default class SimpleEvent {
+  public events: IFunctionMap = {};
+
+  public on(type: string, fn: EventFunctionType): void {
     if (Array.isArray(this.events[type])) {
       this.events[type].push(fn);
     } else {
@@ -18,11 +11,7 @@ class SimpleEvent {
     }
   }
 
-  /**
-   * @param {string} type
-   * @param {function} fn
-   */
-  off(type, fn) {
+  public off(type: string, fn: null | EventFunctionType = null): void {
     if (!this.events[type]) {
       return;
     }
@@ -37,19 +26,13 @@ class SimpleEvent {
     }
   }
 
-  /**
-   * @param {string} type
-   * @param {any} data
-   */
-  trigger(type, data) {
+  public trigger(type: string, data: any = null): void {
     if (Array.isArray(this.events[type])) {
       this.events[type].forEach(fn => fn(data));
     }
   }
 
-  reset() {
+  public reset(): void {
     this.events = {};
   }
 }
-
-module.exports = SimpleEvent;

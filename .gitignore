@@ -2,6 +2,9 @@
 /.yarnclean
 /.nyc_output/
 /coverage/
+/lib/
+/test/
+/doc/
 
 # Created by https://www.gitignore.io/api/node,macos,linux,windows,intellij,phpstorm,webstorm,visualstudiocode
 
