@@ -1,7 +1,7 @@
-import test from "ava";
-import diff from "../../lib/object/diff";
+import test from 'ava';
+import diff from '../../lib/object/diff';
 
-test("nochange", t => {
+test('nochange', t => {
   const fn = () => {};
   t.deepEqual(diff({A: 1, B: fn}, {A: 1, B: fn}), {
     add: [],
@@ -11,29 +11,29 @@ test("nochange", t => {
   });
 });
 
-test("add", t => {
+test('add', t => {
   t.deepEqual(diff({A: 1}, {A: 1, B: 1}), {
-    add: ["B"],
+    add: ['B'],
     change: [],
     differ: true,
     remove: [],
   });
 });
 
-test("change", t => {
+test('change', t => {
   t.deepEqual(diff({A: 1}, {A: 2}), {
     add: [],
-    change: ["A"],
+    change: ['A'],
     differ: true,
     remove: [],
   });
 });
 
-test("remove", t => {
+test('remove', t => {
   t.deepEqual(diff({A: 1, B: 1}, {A: 1}), {
     add: [],
     change: [],
     differ: true,
-    remove: ["B"],
+    remove: ['B'],
   });
 });

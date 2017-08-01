@@ -1,4 +1,8 @@
-import {EventFunctionType, IFunctionMap} from './SimpleEventType';
+export type EventFunctionType = (e: any) => void;
+
+export interface IFunctionMap {
+  [key: string]: EventFunctionType[];
+}
 
 export default class SimpleEvent {
   public events: IFunctionMap = {};

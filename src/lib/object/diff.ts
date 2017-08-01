@@ -1,4 +1,9 @@
-import {IDiffResult} from './diff-type';
+export interface IDiffResult {
+  add: string[];
+  change: string[];
+  remove: string[];
+  differ: boolean;
+}
 
 export default function diff(A: any, B: any): IDiffResult {
   const keysA = Object.keys(A);

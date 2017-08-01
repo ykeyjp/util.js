@@ -1,7 +1,7 @@
 {
   "name": "@ykey/util",
   "description": "Utilities",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": {
     "name": "ykeyjp",
     "email": "ykey.jp@gmail.com",
@@ -51,7 +51,7 @@
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -p tsconfig.json -w",
     "doc": "typedoc --out doc --mode module --target ES2015 src/lib/**/*.ts",
-    "format": "prettier --write --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing src/**/*.ts",
+    "format": "prettier --write --print-width 120 --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing src/{lib,test}/**/*.ts",
     "lint": "tslint src/**/*.ts",
     "report": "run-s test:build report:cover report:html",
     "report:cover": "nyc ava",
