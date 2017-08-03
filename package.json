@@ -1,7 +1,7 @@
 {
   "name": "@ykey/util",
   "description": "Utilities",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": {
     "name": "ykeyjp",
     "email": "ykey.jp@gmail.com",
@@ -9,10 +9,10 @@
   },
   "ava": {
     "files": [
-      "test/**/*.test.js"
+      "test/test/**/*.test.js"
     ],
     "source": [
-      "lib/**/*.js"
+      "test/lib/**/*.js"
     ],
     "powerAssert": false
   },
@@ -28,12 +28,13 @@
     "typescript": "^2.4.2"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=7.6"
   },
   "files": [
     "package.json",
     "README.md",
     "lib",
+    "es6",
     "doc"
   ],
   "homepage": "https://github.com/ykeyjp/util.js",
@@ -42,15 +43,16 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "private": false,
+  "module": "es6/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ykeyjp/util.js.git"
   },
   "scripts": {
-    "build": "node ./node_modules/typescript/bin/tsc -p tsconfig.json",
-    "build:watch": "node ./node_modules/typescript/bin/tsc -p tsconfig.json -w",
-    "doc": "typedoc --out doc --mode modules --target ES6 --exclude **/test/**/*.test.ts",
+    "build": "run-p build:es5 build:es6",
+    "build:es5": "node ./node_modules/typescript/bin/tsc -p tsconfig.es5.json",
+    "build:es6": "node ./node_modules/typescript/bin/tsc -p tsconfig.json",
+    "doc": "typedoc --out doc --mode modules",
     "format": "prettier --write --print-width 120 --single-quote --semi=true --trailing-comma es5 --no-bracket-spacing src/{lib,test}/**/*.ts",
     "lint": "tslint src/**/*.ts",
     "report": "run-s test:build report:cover report:html",

@@ -3,6 +3,7 @@
 /.nyc_output/
 /coverage/
 /lib/
+/es6/
 /test/
 /doc/
 
