@@ -12,7 +12,7 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "types": [],
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": true
   },
   "exclude": [

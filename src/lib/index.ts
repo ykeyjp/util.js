@@ -20,3 +20,5 @@ export default {
     toSnakeCase,
   },
 };
+
+export {INested, IDiffResult};
