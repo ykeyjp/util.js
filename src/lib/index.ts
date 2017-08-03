@@ -21,4 +21,17 @@ export default {
   },
 };
 
-export {INested, IDiffResult};
+export {
+  flatten,
+  SimpleEvent,
+  clone,
+  diff,
+  each,
+  map,
+  toCamelCase,
+  toKebabCase,
+  toPascalCase,
+  toSnakeCase,
+  INested,
+  IDiffResult,
+};
